@@ -3,70 +3,33 @@
 #import('package:rikulo/app/app.dart');
 #import('package:rikulo/view/view.dart');
 
+#import('package:sabertooth/builder.dart');
+
 class LinearLayoutDemo extends Activity {
 
   void onCreate_() {
     title = "Linear Layout Demo";
-    mainView.style.backgroundColor = "#cca";
 
-    //make mainView as vlayout
-    mainView.layout.type = "linear";
-    mainView.layout.orient = "vertical";
-    mainView.profile.width = "flex";
-    mainView.profile.height = "flex";
+    q(mainView).style(backgroundColor: "#cca")
+               .layout(type: "linear", orient: "vertical")
+               .profile(width: Profile.flex, height: Profile.flex);
 
-    //first hlayout
-    View hlayout = new View();
-    hlayout.layout.type = "linear";
-    hlayout.profile.height = "content";
-    hlayout.profile.width = "flex";
-    mainView.addChild(hlayout);
+    q(mainView) << [
+      hlayout(layout: {"type": "linear"}, profile:{"height": Profile.content, "width": Profile.flex}) << [
+        view(style:{"backgroundColor": Color.blue},   profile:{"width": "flex",   "height": "50"}),
+        view(style:{"backgroundColor": Color.orange}, profile:{"width": "flex 2", "height": "50"}),
+        view(style:{"backgroundColor": Color.yellow}, profile:{"width": "flex 3", "height": "50"})
+      ],
+      hlayout(layout: {"type": "linear", "align": "end"}, profile:{"height": "flex", "width": "flex"}) << [
+        view(style:{"backgroundColor": Color.yellow}, profile:{"width": "flex 3", "height": Profile.flex}),
+        view(id: "viewFlex", style:{"backgroundColor": Color.orange}, profile:{"width": "flex 2", "height": "50%"}),
+        view(style:{"backgroundColor": Color.blue},   profile:{"width": "flex 1", "height": "25"}),
+        text("flex 2, 25%", id: "mytext", style:{"border": "1px solid #555"}, profile:{"location": "north center"})
+      ]
+    ];
 
-    View view = new View();
-    view.style.backgroundColor = "blue";
-    view.profile.width = "flex";
-    view.profile.height = "50";
-    hlayout.addChild(view);
-    view = new View();
-    view.style.backgroundColor = "orange";
-    view.profile.width = "flex 2";
-    view.profile.height = "40";
-    hlayout.addChild(view);
-    view = new View();
-    view.style.backgroundColor = "yellow";
-    view.profile.width = "flex 3";
-    view.profile.height = "30";
-    hlayout.addChild(view);
+    q(mainView.query("#mytext")).profile(anchorView: mainView.query("#viewFlex"));
 
-    //second horizontal layout
-    hlayout = new View();
-    hlayout.layout.type = "linear";
-    hlayout.layout.align = "end";
-    hlayout.profile.height = "flex";
-    hlayout.profile.width = "flex";
-    mainView.addChild(hlayout);
-
-    view = new View();
-    view.style.backgroundColor = "yellow";
-    view.profile.width = "flex 3";
-    view.profile.height = "flex";
-    hlayout.addChild(view);
-    view = new View();
-    view.style.backgroundColor = "orange";
-    view.profile.width = "flex 2";
-    view.profile.height = "50%";
-    hlayout.addChild(view);
-    view = new View();
-    view.style.backgroundColor = "blue";
-    view.profile.width = "flex 1";
-    view.profile.height = "25%";
-    hlayout.addChild(view);
-
-    TextView txt = new TextView("flex 2, 25%");
-    txt.style.border = "1px solid #555";
-    txt.profile.anchorView = view.previousSibling;
-    txt.profile.location = "north center";
-    hlayout.addChild(txt);
   }
 }
 
