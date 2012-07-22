@@ -3,7 +3,7 @@
 
 #define MyAppName "SaberTooth Dart Editor (Rikulo bundled)"
 #define MyAppShortName "SaberTooth Editor"
-#define MyAppVersion "1.0.0.M1"
+#define MyAppVersion "1.0.0.M2"
 #define MyAppPublisher "Chanwit Kaewkasi"
 #define MyAppURL "http://twitter.com/chanwit"
 #define MyAppExeName "DartEditor.exe"
@@ -22,7 +22,7 @@ AppSupportURL={#MyAppURL}
 AppUpdatesURL={#MyAppURL}
 DefaultDirName={sd}\SaberTooth
 DefaultGroupName={#MyAppShortName}
-OutputBaseFilename=sabertooth_setup_{#MyAppVersion}
+OutputBaseFilename=sabertooth_w_rikulo_{#MyAppVersion}
 Compression=lzma
 SolidCompression=yes
 
@@ -34,7 +34,7 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 
 [Files]
 Source: ".\_workspace\*"; DestDir: "{app}\workspace"; Flags: ignoreversion recursesubdirs; AfterInstall: ReplacePackagePath
-Source: "*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs; Excludes: "_workspace\*,workspace\*,graphics\*,*.iss,Output\*,*.dart.js,*.dart.js.map,.children,.project"
+Source: "*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs; Excludes: "_workspace\*,workspace\*,graphics\*,*.iss,Output\*,*.dart.js,*.dart.js.map,.children,.project,.git"
 
 
 [Icons]
