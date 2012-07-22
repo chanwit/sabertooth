@@ -33,8 +33,8 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "E:\dart\_workspace\*"; DestDir: "{app}\workspace"; Flags: ignoreversion recursesubdirs; AfterInstall: ReplacePackagePath
-Source: "E:\dart\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs; Excludes: "_workspace\*,workspace\*,graphics\*,*.iss,Output\*,*.dart.js,*.dart.js.map,.children,.project"
+Source: ".\_workspace\*"; DestDir: "{app}\workspace"; Flags: ignoreversion recursesubdirs; AfterInstall: ReplacePackagePath
+Source: "*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs; Excludes: "_workspace\*,workspace\*,graphics\*,*.iss,Output\*,*.dart.js,*.dart.js.map,.children,.project"
 
 
 [Icons]
@@ -57,6 +57,6 @@ begin
   prefValue := appPath + '\dart-sdk\packages';
   StringChangeEx(prefValue, '\', '\\', True);
   StringChangeEx(prefValue, ':', '\:', True);
-  StringChangeEx(prefValue, ' ', '\ ', True);  
-  SaveStringToFile(prefPath, #13#10 + 'package\ root=' + prefValue + #13#10, True);  
+  StringChangeEx(prefValue, ' ', '\ ', True);
+  SaveStringToFile(prefPath, #13#10 + 'package\ root=' + prefValue + #13#10, True);
 end;

@@ -22,7 +22,7 @@ class LinearLayoutDemo extends Activity {
       ],
       hlayout(layout: {"type": "linear", "align": "end"}, profile:{"height": "flex", "width": "flex"}) << [
         view(style:{"backgroundColor": Color.yellow}, profile:{"width": "flex 3", "height": Profile.flex}),
-        view(id: "viewFlex", style:{"backgroundColor": Color.orange}, profile:{"width": "flex 2", "height": "50%"}),
+        view(style:{"backgroundColor": Color.orange}, profile:{"width": "flex 2", "height": "50%"}, id: "viewFlex"),
         view(style:{"backgroundColor": Color.blue},   profile:{"width": "flex 1", "height": "25"}),
         text("flex 2, 25%", id: "mytext", style:{"border": "1px solid #555"}, profile:{"location": "north center"})
       ]
